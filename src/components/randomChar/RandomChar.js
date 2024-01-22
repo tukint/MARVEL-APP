@@ -2,57 +2,34 @@ import { useEffect, useState } from "react";
 import Spinner from '../spinner/Spinner';
 import './randomChar.scss';
 import mjolnir from '../../resources/img/mjolnir.png';
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/MarvelService';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
 
 
 const RandomChar = () => {
 
-    const marvelService = new MarvelService()
-
-    const [char, setChar] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-
-    const onCharLoaded = (char) => {
-        setLoading(false);
-        setChar(char);
-    }
-
-    const onCharLoading = () => {
-        setLoading(true);
-    }
-
-    const onError = () => {
-        setLoading(false);
-        setError(true);
-    }
+    const [char, setChar] = useState(null);
+    const {loading, error, getCharacter,   clearError} = useMarvelService()
 
     useEffect(() => {
         updateChar();
     }, [])
 
 
-
-
-    const updateChar = (retryCount = 0) => {
-        const id = Math.floor(Math.random() * (1011400 - 1009149) + 1009149);
-        onCharLoading()
-        marvelService.getCharacter(id)
-            .then(res => onCharLoaded(res))
-            .catch(error => {
-                console.log(error);
-                if (retryCount < 10) {
-                    updateChar(retryCount + 1);
-                }
-                else {
-                    onError()
-                }
-            });
+    const onCharLoaded = (char) => {
+        console.log('what i get', char);
+        setChar(char);
     }
 
 
+    const updateChar = () => {
+        clearError();
+        const id = Math.floor(Math.random() * (1011400 - 1011000)) + 1011000;
+        getCharacter(id)
+            .then(onCharLoaded);
+
+    }
 
 
 
@@ -76,7 +53,7 @@ const RandomChar = () => {
                 <p className="randomchar__title">
                     Or choose another one
                 </p>
-                <button onClick={() => this.updateChar(0)} className="button button__main">
+                <button onClick={() => updateChar(0)} className="button button__main">
                     <div className="inner">try it</div>
                 </button>
                 <img src={mjolnir} alt="mjolnir" className="randomchar__decoration" />
