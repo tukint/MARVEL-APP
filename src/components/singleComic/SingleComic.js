@@ -24,7 +24,6 @@ const SingleComic = () => {
 
     const onComicLoaded = (comic) => {
         setComic(comic);
-        console.log(comic);
     }
 
     const errorMessage = error ? <ErrorMessage/> : null;

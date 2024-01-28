@@ -99,7 +99,6 @@ const View = ({ char }) => {
                     
                     
                     comics.map((item, i) => {
-                        console.log("each, item: ",item);
                         return (
                             <li key={i} className="char__comics-item">
                                <NavLink to={`/comics/${item.id}`}>{item.name}</NavLink>          

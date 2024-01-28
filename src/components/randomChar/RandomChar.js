@@ -18,7 +18,6 @@ const RandomChar = () => {
 
 
     const onCharLoaded = (char) => {
-        console.log('what i get', char);
         setChar(char);
     }
 
