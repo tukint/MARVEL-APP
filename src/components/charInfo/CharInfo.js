@@ -5,6 +5,7 @@ import useMarvelService from '../../services/MarvelService';
 import Skeleton from '../skeleton/Skeleton';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 const CharInfo = (props) => {
 
@@ -98,9 +99,10 @@ const View = ({ char }) => {
                     
                     
                     comics.map((item, i) => {
+                        console.log("each, item: ",item);
                         return (
                             <li key={i} className="char__comics-item">
-                              {item.name}
+                               <NavLink to={`/comics/${item.id}`}>{item.name}</NavLink>          
                             </li>
                         )
                     }) : "NO COMICS"

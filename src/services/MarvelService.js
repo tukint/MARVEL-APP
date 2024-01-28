@@ -54,6 +54,19 @@ const useMarvelService = () => {
             character.comics.items = character.comics.items.slice(0,10)
         }
 
+        
+
+       character.comics.items = character.comics.items.map(item => {
+        const parts = item.resourceURI.split('/');
+        const id = parts[parts.length - 1];
+        return {
+            ...item,
+            id, 
+        };
+    });
+
+        console.log(character);
+
         return {
             id:character.id,
             name: character.name,
@@ -61,7 +74,7 @@ const useMarvelService = () => {
             thumbnail: character.thumbnail.path + "." + character.thumbnail.extension,
             homepage: character.urls[0].url,
             wiki: character.urls[1].url,
-            comics: character.comics.items
+            comics: character.comics.items,
         }
     }
 
