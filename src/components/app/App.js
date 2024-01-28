@@ -7,8 +7,9 @@ import ComicsList from "../comicsList/ComicsList";
 import Page404 from "../404/404";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SingleComic from "../singleComic/SingleComic";
-
 import decoration from "../../resources/img/vision.png";
+
+
 
 const App = () => {
   const [selectedChar, setSelectedChar] = useState(null);
