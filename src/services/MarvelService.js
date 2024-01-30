@@ -45,9 +45,9 @@ const useMarvelService = () => {
             character.description = 'No Data for this character'
         }
 
-        if(character.description.length > 211) {
-            character.description = character.description.slice(0,210) + '...'
-        }
+        // if(character.description.length > 211) {
+        //     character.description = character.description.slice(0,210) + '...'
+        // }
 
         if(character.comics.items.length > 10) {
             character.comics.items = character.comics.items.slice(0,10)
@@ -90,6 +90,12 @@ const useMarvelService = () => {
 		return   res.data.results.map(_transformComics);
 	};
 
+    const getCharacterByName = async (name) => {
+		const res = await request(`${_apiBase}characters?name=${name}&${_apiKey}`);
+        console.log('my res for char', res);
+		return res.data.results.map(_transformCharacter);
+	};
+
 
 
 
@@ -111,7 +117,7 @@ const useMarvelService = () => {
     }
 
 
-    return {loading, error, clearError, getAllCharacters, getCharacter, getAllComics, getComics}
+    return {loading, error, clearError, getAllCharacters, getCharacter, getAllComics, getComics, getCharacterByName}
 }
 
 export default useMarvelService

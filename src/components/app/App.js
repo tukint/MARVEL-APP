@@ -7,7 +7,9 @@ import ComicsList from "../comicsList/ComicsList";
 import Page404 from "../404/404";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SingleComic from "../singleComic/SingleComic";
+import SingleCharPage from "../SingleCharPage/SingleCharPage";
 import decoration from "../../resources/img/vision.png";
+import CharSearchForm from "../FindChar/CharSearchForm";
 
 
 
@@ -30,7 +32,10 @@ const App = () => {
                   <RandomChar />
                   <div className="char__content">
                     <CharList onCharSelected={onCharSelected} />
+                    <div>
                     <CharInfo charId={selectedChar} />
+                    <CharSearchForm/>
+                    </div>
                   </div>
                   <img
                     className="bg-decoration"
@@ -65,7 +70,16 @@ const App = () => {
                     <SingleComic />
                   </>
                 } />
+
+            <Route path="/:charId" element={
+                  <>
+                    <AppHeader />
+                    <SingleCharPage />
+                  </>
+                } />
           </Routes>
+        
+          
         </main>
       </div>
     </Router>

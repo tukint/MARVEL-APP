@@ -18,7 +18,11 @@ const RandomChar = () => {
 
 
     const onCharLoaded = (char) => {
-        setChar(char);
+        let oneChar = char
+        if(char.description.length > 211) {
+            oneChar.description = char.description.slice(0,210) + '...'
+        }
+        setChar(oneChar);
     }
 
 
