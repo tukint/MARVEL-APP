@@ -32,7 +32,7 @@ const App = () => {
                   <RandomChar />
                   <div className="char__content">
                     <CharList onCharSelected={onCharSelected} />
-                    <div>
+                    <div style={{position: 'sticky', top: '2%'}}>
                     <CharInfo charId={selectedChar} />
                     <CharSearchForm/>
                     </div>

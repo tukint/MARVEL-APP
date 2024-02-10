@@ -10,7 +10,7 @@ const ComicsList = () => {
 
     const [comicsList, setComicsList] = useState([])
     const [newItemLoading, setNewItemLoading] = useState(false);
-    const [offset, setOffset] = useState(210);
+    const [offset, setOffset] = useState(220);
     const [comicsEnded, setComicsEnded] = useState(false);
     const { getAllComics, loading, error } = useMarvelService()
 
