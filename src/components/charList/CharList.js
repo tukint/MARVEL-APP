@@ -3,6 +3,7 @@ import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import './charList.scss';
 import useMarvelService from '../../services/MarvelService';
+import NoImage from '../../resources/img/image_not_available.jpg'
 
 
 const CharList = (props) => {
@@ -60,6 +61,7 @@ const CharList = (props) => {
             let imgStyle = {'objectFit' : 'cover'};
             if (item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
                 imgStyle = {'objectFit' : 'unset'};
+                item.thumbnail= NoImage;
             }
             
             return (
