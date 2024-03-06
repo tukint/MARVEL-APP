@@ -11,7 +11,6 @@ const useMarvelService = () => {
 
 
     const getAllCharacters = async (offset = _baseOffset) => {
-        console.log('what the fuck', `${_apiBase}characters?limit=9&offset=${offset}&${_apiKey}`)
 		const res = await request(
 			`${_apiBase}characters?limit=9&offset=${offset}&${_apiKey}`
 		);
